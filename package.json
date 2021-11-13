@@ -7,6 +7,7 @@
   "author": "Jake Dennison <srt4rulez@gmail.com>",
   "license": "MIT",
   "private": true,
+  "type": "module",
   "scripts": {
     "server": "node src/index.js",
     "serve": "yarn run server",
@@ -20,8 +21,9 @@
     "eslint-plugin-promise": "^5.1.1"
   },
   "dependencies": {
-    "cli-table": "^0.3.6",
+    "axios": "^0.24.0",
     "commander": "^8.3.0",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "log-symbols": "^5.0.0"
   }
 }

@@ -32,7 +32,7 @@ export const makeRepoCommand = (config, configFileLocation) => {
 
             fs.writeFileSync(configFileLocation, JSON.stringify(config));
 
-            console.log(`Repository "${repository}" successfully added.`);
+            console.log(`Repository "${repository}" successfully added to repository list.`);
         })
     ;
 
@@ -59,7 +59,7 @@ export const makeRepoCommand = (config, configFileLocation) => {
 
             fs.writeFileSync(configFileLocation, JSON.stringify(config));
 
-            console.log(`Repository "${repository}" successfully removed.`);
+            console.log(`Repository "${repository}" successfully removed from repository list.`);
         })
     ;
 

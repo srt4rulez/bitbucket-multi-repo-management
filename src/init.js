@@ -57,6 +57,18 @@ export const makeInitCommand = (config, configFileLocation) => {
                         return true;
                     },
                 },
+                {
+                    type: 'input',
+                    name: 'versionPrefix',
+                    message: 'Version / tag prefix when creating tags:',
+                    default: 'v',
+                },
+                {
+                    type: 'input',
+                    name: 'prereleaseIdentifier',
+                    message: 'Pre-Release Identifier for tags (usually alpha, beta, rc):',
+                    default: 'rc',
+                },
             ]);
 
             if (!config) {
@@ -67,6 +79,9 @@ export const makeInitCommand = (config, configFileLocation) => {
 
             config.auth.username    = answers.username.trim();
             config.auth.appPassword = answers.appPassword.trim();
+
+            config.versionPrefix = answers.versionPrefix;
+            config.prereleaseIdentifier = answers.prereleaseIdentifier;
 
             fs.writeFileSync(configFileLocation, JSON.stringify(config));
 

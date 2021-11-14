@@ -24,7 +24,8 @@
   "devDependencies": {
     "eslint": "^7.0.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.1"
+    "eslint-plugin-promise": "^5.1.1",
+    "ls-engines": "^0.6.1"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -44,5 +45,8 @@
     "multi",
     "repo",
     "repository"
-  ]
+  ],
+  "engines": {
+    "node": "^17 || ^16 || ^15 || ^14 || ^13 || ^12"
+  }
 }

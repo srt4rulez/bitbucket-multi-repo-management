@@ -8,7 +8,7 @@ ${chalk.blue('Repositories')}
 ${props.repos.join('\n')}
 
 ${chalk.blue('Branch Info')}
-From Branch: ${props.fromBranch}
+From Branch: ${chalk.magenta(props.fromBranch)}
 Branch Name: ${chalk.green(props.branchName)}
 `.trim();
 
@@ -28,6 +28,7 @@ const getDeleteBranchConfigLog = (props) => `
 ${chalk.blue('Repositories')}
 ${props.repos.join('\n')}
 
+${chalk.blue('Action Info')}
 Branch to delete: ${chalk.red(props.branchName)}
 `.trim();
 
@@ -73,7 +74,7 @@ export const makeBranchCommand = (config) => {
                 {
                     type: 'confirm',
                     name: 'hasConfirmed',
-                    message: `Are you sure you want to create this branch on all configured repositories? ${chalk.red('This action cannot be undone.')}`,
+                    message: `Create "${chalk.green(branchName)}" branch from "${chalk.magenta(fromBranch)}" on all configured repositories? ${chalk.red('Warning: This action cannot be undone.')}`,
                     default: false,
                 },
             ]);
@@ -100,6 +101,7 @@ export const makeBranchCommand = (config) => {
                     branchName: branchName,
                     commitHash: '',
                     commitLink: '',
+                    commitAuthor: '',
                     errorMessage: '',
                 };
 
@@ -168,7 +170,7 @@ export const makeBranchCommand = (config) => {
                 {
                     type: 'confirm',
                     name: 'hasConfirmed',
-                    message: `Are you sure you want to delete this branch on all configured repositories? ${chalk.red('This action cannot be undone.')}`,
+                    message: `Delete "${chalk.red(branchName)}" branch on all configured repositories? ${chalk.red('Warning: This action cannot be undone.')}`,
                     default: false,
                 },
             ]);

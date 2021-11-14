@@ -11,9 +11,25 @@
   "license": "MIT",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "^17 || ^16 || ^15 || ^14 || ^13 || ^12"
+  },
   "bin": {
     "bitbucket-multi-repo-management": "bin/console.js"
   },
+  "bugs": {
+    "url": "https://github.com/srt4rulez/bitbucket-multi-repo-management/issues"
+  },
+  "homepage": "https://github.com/srt4rulez/bitbucket-multi-repo-management#readme",
+  "keywords": [
+    "console",
+    "cli",
+    "bitbucket",
+    "git",
+    "multi",
+    "repo",
+    "repository"
+  ],
   "scripts": {
     "server": "node bin/console.js",
     "serve": "yarn run server",
@@ -32,21 +48,5 @@
     "chalk": "^4.1.2",
     "commander": "^8.3.0",
     "inquirer": "^8.2.0"
-  },
-  "bugs": {
-    "url": "https://github.com/srt4rulez/bitbucket-multi-repo-management/issues"
-  },
-  "homepage": "https://github.com/srt4rulez/bitbucket-multi-repo-management#readme",
-  "keywords": [
-    "console",
-    "cli",
-    "bitbucket",
-    "git",
-    "multi",
-    "repo",
-    "repository"
-  ],
-  "engines": {
-    "node": "^17 || ^16 || ^15 || ^14 || ^13 || ^12"
   }
 }

@@ -1,7 +1,13 @@
 import { Command } from 'commander';
 import inquirer from 'inquirer';
 import fs from 'fs';
-import logSymbols from 'log-symbols';
+
+const noteLog = `
+Note: Do not use your own bitbucket password. Create an app password with repositories read + write access.
+        
+To setup a bitbucket app password, checkout the following documentation:
+https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/
+`.trim();
 
 export const makeInitCommand = (config, configFileLocation) => {
     const program = new Command();
@@ -26,12 +32,7 @@ export const makeInitCommand = (config, configFileLocation) => {
                 }
             }
 
-            console.log(`
-${logSymbols.info} Note: Do not use your own bitbucket password. Create an app password with repositories read + write access.
-        
-To setup a bitbucket app password, checkout the following documentation:
-https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/
-        `);
+            console.log('\n' + noteLog + '\n');
 
             const answers = await inquirer.prompt([
                 {
@@ -69,7 +70,7 @@ https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/
 
             fs.writeFileSync(configFileLocation, JSON.stringify(config));
 
-            console.log(`${logSymbols.success} Created ${configFileLocation}.`);
+            console.log(`Created ${configFileLocation}.`);
         })
     ;
 

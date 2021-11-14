@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import fs from 'fs';
-import logSymbols from 'log-symbols';
 
 export const makeRepoCommand = (config, configFileLocation) => {
     const program = new Command();
@@ -25,7 +24,7 @@ export const makeRepoCommand = (config, configFileLocation) => {
             const hasExistingRepo = config.repos.some((repo) => repo === repository);
 
             if (hasExistingRepo) {
-                console.log(`${logSymbols.warning} Repository "${repository}" is already added, skipping.`);
+                console.log(`Repository "${repository}" is already added, skipping.`);
                 return;
             }
 
@@ -33,7 +32,7 @@ export const makeRepoCommand = (config, configFileLocation) => {
 
             fs.writeFileSync(configFileLocation, JSON.stringify(config));
 
-            console.log(`${logSymbols.success} Repository "${repository}" successfully added.`);
+            console.log(`Repository "${repository}" successfully added.`);
         })
     ;
 
@@ -68,7 +67,6 @@ export const makeRepoCommand = (config, configFileLocation) => {
         .command('list')
         .description('List all existing repositories.')
         .action(() => {
-
             const repos = (config.repos || []);
 
             if (repos.length === 0) {

@@ -1,9 +1,9 @@
 import { Command } from 'commander';
 import axios from 'axios';
-import logSymbols from 'log-symbols';
+import chalk from 'chalk';
 
 const getSuccessLog = (props) => `
-${logSymbols.success} ${props.repo}
+${chalk.black.bgGreenBright('SUCCESS')} ${chalk.yellow(props.repo)}
     Branch Name: ${props.branchName}
     Author: ${props.commitAuthor}
     Commit: ${props.commitHash}
@@ -11,8 +11,8 @@ ${logSymbols.success} ${props.repo}
 `.trim();
 
 const getErrorLog = (props) => `
-${logSymbols.error} ${props.repo}
-    Error Message: ${props.errorMessage.trim()}
+${chalk.white.bgRed('FAILURE')} ${chalk.yellow(props.repo)}
+    ${chalk.red(props.errorMessage.trim())}
 `.trim();
 
 export const makeCreateBranchCommand = (config) => {

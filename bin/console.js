@@ -7,6 +7,7 @@ import path from 'path';
 import { makeInitCommand } from './../src/init.js';
 import { makeRepoCommand } from './../src/repo.js';
 import { makeBranchCommand } from './../src/branch.js';
+import { makeTagCommand } from './../src/tag.js';
 import { URL } from 'url';
 
 const __dirname = new URL('.', import.meta.url).pathname;
@@ -34,5 +35,6 @@ program
 program.addCommand(makeInitCommand(config, configFileLocation));
 program.addCommand(makeRepoCommand(config, configFileLocation));
 program.addCommand(makeBranchCommand(config, configFileLocation));
+program.addCommand(makeTagCommand(config, configFileLocation));
 
 program.parse();

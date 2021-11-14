@@ -26,7 +26,7 @@ try {
 const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, './../package.json')));
 
 program
-    .name(packageJson.name)
+    .name('bitbucket-multi-repo-management')
     .version(packageJson.version)
     .description('A node.js console application that manages multiple git repositories in Bitbucket Cloud via the Bitbucket API.')
 ;

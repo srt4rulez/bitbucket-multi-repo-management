@@ -17,7 +17,7 @@
     "lint:fix": "eslint './src' --quiet --color --fix --cache --cache-location './node_modules/.cache/'"
   },
   "devDependencies": {
-    "eslint": "^8.2.0",
+    "eslint": "^7.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1"
   },

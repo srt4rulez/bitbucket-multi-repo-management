@@ -10,7 +10,7 @@ module.exports = {
         'plugin:promise/recommended',
     ],
     'parserOptions': {
-        'ecmaVersion': 13
+        'ecmaVersion': 12
     },
     'plugins': [
         'promise',

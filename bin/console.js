@@ -4,9 +4,9 @@ import { Command } from 'commander';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import { makeInitCommand } from './init.js';
-import { makeRepoCommand } from './repo.js';
-import { makeBranchCommand } from './branch.js';
+import { makeInitCommand } from './../src/init.js';
+import { makeRepoCommand } from './../src/repo.js';
+import { makeBranchCommand } from './../src/branch.js';
 import { URL } from 'url';
 
 const __dirname = new URL('.', import.meta.url).pathname;

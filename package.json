@@ -9,8 +9,10 @@
   },
   "author": "Jake Dennison <srt4rulez@gmail.com>",
   "license": "MIT",
-  "private": true,
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": "^17 || ^16 || ^15 || ^14 || ^13 || ^12"
   },

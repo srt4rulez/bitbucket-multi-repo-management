@@ -33,6 +33,7 @@
     "repository"
   ],
   "scripts": {
+    "release": "release-it",
     "server": "node bin/console.js",
     "serve": "yarn run server",
     "s": "yarn run server",
@@ -43,7 +44,8 @@
     "eslint": "^7.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
-    "ls-engines": "^0.6.1"
+    "ls-engines": "^0.6.1",
+    "release-it": "^14.11.7"
   },
   "dependencies": {
     "axios": "^0.24.0",

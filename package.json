@@ -1,0 +1,56 @@
+{
+  "name": "@srt4rulez/bitbucket-multi-repo-management",
+  "version": "0.1.0",
+  "description": "A node.js console application that manages multiple git repositories in Bitbucket Cloud via the Bitbucket API.",
+  "main": "bin/console.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/srt4rulez/bitbucket-multi-repo-management.git"
+  },
+  "author": "Jake Dennison <srt4rulez@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": "^17 || ^16 || ^15 || ^14 || ^13 || ^12"
+  },
+  "bin": {
+    "bitbucket-multi-repo-management": "bin/console.js"
+  },
+  "bugs": {
+    "url": "https://github.com/srt4rulez/bitbucket-multi-repo-management/issues"
+  },
+  "homepage": "https://github.com/srt4rulez/bitbucket-multi-repo-management#readme",
+  "keywords": [
+    "console",
+    "cli",
+    "bitbucket",
+    "git",
+    "multi",
+    "repo",
+    "repository"
+  ],
+  "scripts": {
+    "release": "release-it",
+    "update:changelog": "auto-changelog",
+    "lint": "eslint './src' --quiet --color --cache --cache-location './node_modules/.cache/'",
+    "lint:fix": "eslint './src' --quiet --color --fix --cache --cache-location './node_modules/.cache/'"
+  },
+  "devDependencies": {
+    "auto-changelog": "^2.3.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "ls-engines": "^0.6.1",
+    "release-it": "^14.11.7"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "chalk": "^4.1.2",
+    "commander": "^8.3.0",
+    "inquirer": "^8.2.0",
+    "semver": "^7.3.5"
+  }
+}

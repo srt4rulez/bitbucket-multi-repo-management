@@ -35,9 +35,6 @@
   "scripts": {
     "release": "release-it",
     "update:changelog": "auto-changelog",
-    "server": "node bin/console.js",
-    "serve": "yarn run server",
-    "s": "yarn run server",
     "lint": "eslint './src' --quiet --color --cache --cache-location './node_modules/.cache/'",
     "lint:fix": "eslint './src' --quiet --color --fix --cache --cache-location './node_modules/.cache/'"
   },

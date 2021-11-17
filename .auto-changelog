@@ -1,0 +1,9 @@
+{
+    "output": "CHANGELOG.md",
+    "template": "keepachangelog",
+    "package": true,
+    "unreleased": true,
+    "commitLimit": false,
+    "sortCommits": "date-desc",
+    "ignoreCommitPattern": "^Release\\s(\\d+)\\.(\\d+)\\.(\\d+)"
+}

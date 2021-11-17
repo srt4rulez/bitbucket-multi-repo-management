@@ -34,6 +34,7 @@
   ],
   "scripts": {
     "release": "release-it",
+    "update:changelog": "auto-changelog",
     "server": "node bin/console.js",
     "serve": "yarn run server",
     "s": "yarn run server",
@@ -41,6 +42,7 @@
     "lint:fix": "eslint './src' --quiet --color --fix --cache --cache-location './node_modules/.cache/'"
   },
   "devDependencies": {
+    "auto-changelog": "^2.3.0",
     "eslint": "^7.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",

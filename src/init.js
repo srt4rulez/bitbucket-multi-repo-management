@@ -66,7 +66,7 @@ export const makeInitCommand = (authConfig, authConfigFileLocation) => {
             authConfig.username    = answers.username.trim();
             authConfig.appPassword = answers.appPassword.trim();
 
-            fs.writeFileSync(authConfigFileLocation, JSON.stringify(authConfig));
+            fs.writeFileSync(authConfigFileLocation, JSON.stringify(authConfig, null, 4));
 
             console.log(`Created ${authConfigFileLocation}.`);
         })

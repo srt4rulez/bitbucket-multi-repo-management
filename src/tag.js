@@ -6,7 +6,7 @@ import semver from 'semver';
 
 const getCreateTagConfigLog = (props) => `
 ${chalk.blue('Repositories')}
-${props.repos.join('\n')}
+${props.repositories.join('\n')}
 
 ${chalk.blue('Action Info')}
 From Branch / Commit Hash: ${chalk.magenta(props.fromBranchOrHash)}
@@ -29,7 +29,7 @@ ${chalk.white.bgRed('FAILURE')} ${chalk.yellow(props.repo)}
 
 const getDeleteTagConfigLog = (props) => `
 ${chalk.blue('Repositories')}
-${props.repos.join('\n')}
+${props.repositories.join('\n')}
 
 ${chalk.blue('Action Info')}
 Tag to delete: ${chalk.red(props.tagName)}
@@ -79,7 +79,7 @@ const releases = [
     },
 ];
 
-export const makeTagCommand = (config) => {
+export const makeTagCommand = (authConfig, config) => {
     const program = new Command();
 
     program
@@ -93,15 +93,17 @@ export const makeTagCommand = (config) => {
         .option('-i, --interactive', 'Run through prompts to create a new version tag. Includes an easy way to pick a new version based on the current version.')
         .argument('[fromBranchOrHash]', 'Branch or the specific commit hash create tag from. If branch is used, it will use the last commit to create the tag from.')
         .argument('[tagName]', 'Tag name to create.')
-        .action(async(fromBranchOrHash, tagName, options) => {
-            if (!config) {
+        .action(async(fromBranchOrHash, tagName, options = {
+            interactive: undefined,
+        }) => {
+            if (!authConfig) {
                 console.log('Missing configuration file. Please run "init" command and try again.');
                 return;
             }
 
-            const repos = config.repos || [];
+            const repositories = config.repositories || [];
 
-            if (repos.length === 0) {
+            if (repositories.length === 0) {
                 console.log('No repositories setup yet. Please run "repo add" command and try again.');
                 return;
             }
@@ -137,7 +139,9 @@ export const makeTagCommand = (config) => {
                         type: 'list',
                         name: 'newVersion',
                         message: 'Which version would you like to create?',
-                        choices: (answers) => {
+                        choices: (answers = {
+                            currentVersion: '',
+                        }) => {
                             // Remove any "v" prefixes to avoid duplicates with shouldPrefixWithV
                             const currentVersion = answers.currentVersion.replace(/^v+|v+$/g, '');
 
@@ -160,7 +164,7 @@ export const makeTagCommand = (config) => {
             }
 
             console.log('\n' + getCreateTagConfigLog({
-                repos: repos,
+                repositories: repositories,
                 fromBranchOrHash: fromBranchOrHash,
                 tagName: tagName,
             }) + '\n');
@@ -199,12 +203,12 @@ export const makeTagCommand = (config) => {
                     'Content-Type': 'application/json',
                 },
                 auth: {
-                    username: config.auth.username,
-                    password: config.auth.appPassword,
+                    username: authConfig.username,
+                    password: authConfig.appPassword,
                 },
             });
 
-            for (const repo of repos) {
+            for (const repo of repositories) {
 
                 const logProps = {
                     repo: repo,
@@ -261,20 +265,20 @@ export const makeTagCommand = (config) => {
         .description('Delete a tag on all configured repositories')
         .argument('<tagName>', 'Branch name to delete.')
         .action(async(tagName) => {
-            if (!config) {
-                console.log('Missing configuration file. Please run "init" command and try again.');
+            if (!authConfig) {
+                console.log('Missing auth configuration file. Please run "init" command and try again.');
                 return;
             }
 
-            const repos = config.repos || [];
+            const repositories = config.repositories || [];
 
-            if (repos.length === 0) {
+            if (repositories.length === 0) {
                 console.log('No repositories setup yet. Please run "repo add" command and try again.');
                 return;
             }
 
             console.log('\n' + getDeleteTagConfigLog({
-                repos: repos,
+                repositories: repositories,
                 tagName: tagName,
             }) + '\n');
 
@@ -297,12 +301,12 @@ export const makeTagCommand = (config) => {
                     'Content-Type': 'application/json',
                 },
                 auth: {
-                    username: config.auth.username,
-                    password: config.auth.appPassword,
+                    username: authConfig.username,
+                    password: authConfig.appPassword,
                 },
             });
 
-            for (const repo of repos) {
+            for (const repo of repositories) {
 
                 const logProps = {
                     repo: repo,

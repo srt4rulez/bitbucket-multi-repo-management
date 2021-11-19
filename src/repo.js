@@ -1,80 +1,25 @@
 import { Command } from 'commander';
-import fs from 'fs';
 
-export const makeRepoCommand = (config, configFileLocation) => {
+export const makeRepoCommand = (config) => {
     const program = new Command();
 
     program
         .name('repo')
-        .description('Add, remove and list repositories.')
-    ;
-
-    program
-        .command('add')
-        .description('Add a new repository to the list.')
-        .argument('<repository>', 'Repository name you\'d like to add. This should include the user/org.')
-        .action((repository) => {
-            if (!config) {
-                console.log('Missing configuration file. Please run "init" command and try again.');
-                return;
-            }
-
-            config.repos = config.repos || [];
-
-            const hasExistingRepo = config.repos.some((repo) => repo === repository);
-
-            if (hasExistingRepo) {
-                console.log(`Repository "${repository}" is already added, skipping.`);
-                return;
-            }
-
-            config.repos.push(repository);
-
-            fs.writeFileSync(configFileLocation, JSON.stringify(config));
-
-            console.log(`Repository "${repository}" successfully added to repository list.`);
-        })
-    ;
-
-    program
-        .command('remove')
-        .description('Remove an existing repository from the list.')
-        .argument('<repository>', 'Repository name you\'d like to add. This should include the user/org.')
-        .action((repository) => {
-            if (!config) {
-                console.log('Missing configuration file. Please run "init" command and try again.');
-                return;
-            }
-
-            config.repos = config.repos || [];
-
-            const hasExistingRepo = config.repos.some((repo) => repo === repository);
-
-            if (!hasExistingRepo) {
-                console.log(`Repository "${repository}" doesn't exist, skipping.`);
-                return;
-            }
-
-            config.repos = config.repos.filter((repo) => repo !== repository);
-
-            fs.writeFileSync(configFileLocation, JSON.stringify(config));
-
-            console.log(`Repository "${repository}" successfully removed from repository list.`);
-        })
+        .description('List repositories.')
     ;
 
     program
         .command('list')
-        .description('List all existing repositories.')
+        .description('List all configured repositories.')
         .action(() => {
-            const repos = (config.repos || []);
+            const repositories = (config.repositories || []);
 
-            if (repos.length === 0) {
+            if (repositories.length === 0) {
                 console.log('No repositories added yet. Try adding one with "repo add <repository>"');
                 return;
             }
 
-            repos.forEach((repo) => {
+            repositories.forEach((repo) => {
                 console.log(repo);
             });
         })

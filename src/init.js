@@ -9,7 +9,7 @@ To setup a bitbucket app password, checkout the following documentation:
 https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/
 `.trim();
 
-export const makeInitCommand = (config, configFileLocation) => {
+export const makeInitCommand = (authConfig, authConfigFileLocation) => {
     const program = new Command();
 
     program
@@ -17,12 +17,12 @@ export const makeInitCommand = (config, configFileLocation) => {
         .description('Create the configuration file with your bitbucket username and app password.')
         .action(async() => {
 
-            if (config) {
+            if (authConfig) {
                 const existingConfigAnswers = await inquirer.prompt([
                     {
                         type: 'confirm',
                         name: 'shouldOverwriteConfig',
-                        message: `Existing configuration file at ${configFileLocation}. Would you like to overwrite it?`,
+                        message: `Existing configuration file at ${authConfigFileLocation}. Would you like to overwrite it?`,
                         default: false,
                     },
                 ]);
@@ -57,35 +57,18 @@ export const makeInitCommand = (config, configFileLocation) => {
                         return true;
                     },
                 },
-                {
-                    type: 'input',
-                    name: 'versionPrefix',
-                    message: 'Version / tag prefix when creating tags:',
-                    default: 'v',
-                },
-                {
-                    type: 'input',
-                    name: 'prereleaseIdentifier',
-                    message: 'Pre-Release Identifier for tags (usually alpha, beta, rc):',
-                    default: 'rc',
-                },
             ]);
 
-            if (!config) {
-                config = {};
+            if (!authConfig) {
+                authConfig = {};
             }
 
-            config.auth = config.auth || {};
+            authConfig.username    = answers.username.trim();
+            authConfig.appPassword = answers.appPassword.trim();
 
-            config.auth.username    = answers.username.trim();
-            config.auth.appPassword = answers.appPassword.trim();
+            fs.writeFileSync(authConfigFileLocation, JSON.stringify(authConfig));
 
-            config.versionPrefix = answers.versionPrefix;
-            config.prereleaseIdentifier = answers.prereleaseIdentifier;
-
-            fs.writeFileSync(configFileLocation, JSON.stringify(config));
-
-            console.log(`Created ${configFileLocation}.`);
+            console.log(`Created ${authConfigFileLocation}.`);
         })
     ;
 

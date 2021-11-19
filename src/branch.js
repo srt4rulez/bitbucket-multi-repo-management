@@ -5,7 +5,7 @@ import inquirer from 'inquirer';
 
 const getCreateBranchConfigLog = (props) => `
 ${chalk.blue('Repositories')}
-${props.repos.join('\n')}
+${props.repositories.join('\n')}
 
 ${chalk.blue('Branch Info')}
 From Branch: ${chalk.magenta(props.fromBranch)}
@@ -26,7 +26,7 @@ ${chalk.white.bgRed('FAILURE')} ${chalk.yellow(props.repo)}
 
 const getDeleteBranchConfigLog = (props) => `
 ${chalk.blue('Repositories')}
-${props.repos.join('\n')}
+${props.repositories.join('\n')}
 
 ${chalk.blue('Action Info')}
 Branch to delete: ${chalk.red(props.branchName)}
@@ -38,7 +38,7 @@ ${chalk.black.bgGreenBright('SUCCESS')} ${chalk.yellow(props.repo)}
 
 const getDeleteBranchErrorLog = getCreateBranchErrorLog; // same as create.
 
-export const makeBranchCommand = (config) => {
+export const makeBranchCommand = (authConfig, config) => {
     const program = new Command();
 
     program
@@ -52,20 +52,20 @@ export const makeBranchCommand = (config) => {
         .argument('<fromBranch>', 'Branch to create from.')
         .argument('<branchName>', 'Branch name to create.')
         .action(async(fromBranch, branchName) => {
-            if (!config) {
-                console.log('Missing configuration file. Please run "init" command and try again.');
+            if (!authConfig) {
+                console.log('Missing auth configuration file. Please run "init" command and try again.');
                 return;
             }
 
-            const repos = config.repos || [];
+            const repositories = config.repositories || [];
 
-            if (repos.length === 0) {
+            if (repositories.length === 0) {
                 console.log('No repositories setup yet. Please run "repo add" command and try again.');
                 return;
             }
 
             console.log('\n' + getCreateBranchConfigLog({
-                repos: repos,
+                repositories: repositories,
                 fromBranch: fromBranch,
                 branchName: branchName,
             }) + '\n');
@@ -89,12 +89,12 @@ export const makeBranchCommand = (config) => {
                     'Content-Type': 'application/json',
                 },
                 auth: {
-                    username: config.auth.username,
-                    password: config.auth.appPassword,
+                    username: authConfig.username,
+                    password: authConfig.appPassword,
                 },
             });
 
-            for (const repo of repos) {
+            for (const repo of repositories) {
 
                 const logProps = {
                     repo: repo,
@@ -149,20 +149,20 @@ export const makeBranchCommand = (config) => {
         .description('Delete a branch on all configured repositories')
         .argument('<branchName>', 'Branch name to delete.')
         .action(async(branchName) => {
-            if (!config) {
-                console.log('Missing configuration file. Please run "init" command and try again.');
+            if (!authConfig) {
+                console.log('Missing auth configuration file. Please run "init" command and try again.');
                 return;
             }
 
-            const repos = config.repos || [];
+            const repositories = config.repositories || [];
 
-            if (repos.length === 0) {
-                console.log('No repositories setup yet. Please run "repo add" command and try again.');
+            if (repositories.length === 0) {
+                console.log('No repositories setup yet.');
                 return;
             }
 
             console.log('\n' + getDeleteBranchConfigLog({
-                repos: repos,
+                repositories: repositories,
                 branchName: branchName,
             }) + '\n');
 
@@ -185,12 +185,12 @@ export const makeBranchCommand = (config) => {
                     'Content-Type': 'application/json',
                 },
                 auth: {
-                    username: config.auth.username,
-                    password: config.auth.appPassword,
+                    username: authConfig.username,
+                    password: authConfig.appPassword,
                 },
             });
 
-            for (const repo of repos) {
+            for (const repo of repositories) {
 
                 const logProps = {
                     repo: repo,

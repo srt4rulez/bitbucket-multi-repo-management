@@ -17,7 +17,7 @@
     "node": "^17 || ^16 || ^15 || ^14 || ^13 || ^12"
   },
   "bin": {
-    "bitbucket-multi-repo-management": "bin/console.js"
+    "bmrm": "bin/console.js"
   },
   "bugs": {
     "url": "https://github.com/srt4rulez/bitbucket-multi-repo-management/issues"

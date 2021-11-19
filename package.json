@@ -32,6 +32,10 @@
     "repo",
     "repository"
   ],
+  "files": [
+    "bin/*",
+    "src/*"
+  ],
   "scripts": {
     "release": "release-it",
     "update:changelog": "auto-changelog",

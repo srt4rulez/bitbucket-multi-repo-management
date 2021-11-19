@@ -69,7 +69,7 @@
   resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
-"@isaacs/string-locale-compare@^1.0.1":
+"@isaacs/string-locale-compare@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@isaacs/string-locale-compare/-/string-locale-compare-1.1.0.tgz#291c227e93fd407a96ecd59879a35809120e432b"
   integrity sha512-SQ7Kzhh9+D+ZW9MA0zkYv3VXhIDNx+LzM6EJ+/65I3QY+enU6Itte7E5XX7EWrqLW2FN4n06GWzBnPoC3th2aQ==
@@ -96,17 +96,17 @@
     fastq "^1.6.0"
 
 "@npmcli/arborist@^4.0.2":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@npmcli/arborist/-/arborist-4.0.4.tgz#a532a7cc430ccbd87c0595a8828f9614f29d2dac"
-  integrity sha512-5hRkiHF9zu62z6a7CJqhVG5CFUVnbYqvrrcxxEmhxFgyH2ovICyULOrj7nF4VBlfzp7OPu/rveV2ts9iYrn74g==
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@npmcli/arborist/-/arborist-4.0.5.tgz#7cdcfed28cad03803f5d75caf2b0f3051165ee70"
+  integrity sha512-WR2cqxzjsvmHJ9sKCdqBYG/qeiAXB9ev1iq1W2Rry7LxeJ7eDtTr4mOWe/TBvp6xFzevGecQc2YEWwExTuLZLg==
   dependencies:
-    "@isaacs/string-locale-compare" "^1.0.1"
+    "@isaacs/string-locale-compare" "^1.1.0"
     "@npmcli/installed-package-contents" "^1.0.7"
     "@npmcli/map-workspaces" "^2.0.0"
     "@npmcli/metavuln-calculator" "^2.0.0"
     "@npmcli/move-file" "^1.1.0"
     "@npmcli/name-from-folder" "^1.0.1"
-    "@npmcli/node-gyp" "^1.0.1"
+    "@npmcli/node-gyp" "^1.0.3"
     "@npmcli/package-json" "^1.0.1"
     "@npmcli/run-script" "^2.0.0"
     bin-links "^2.3.0"
@@ -120,7 +120,7 @@
     npm-package-arg "^8.1.5"
     npm-pick-manifest "^6.1.0"
     npm-registry-fetch "^11.0.0"
-    pacote "^12.0.0"
+    pacote "^12.0.2"
     parse-conflict-json "^1.1.1"
     proc-log "^1.0.0"
     promise-all-reject-late "^1.0.0"
@@ -196,7 +196,7 @@
   resolved "https://registry.yarnpkg.com/@npmcli/name-from-folder/-/name-from-folder-1.0.1.tgz#77ecd0a4fcb772ba6fe927e2e2e155fbec2e6b1a"
   integrity sha512-qq3oEfcLFwNfEYOQ8HLimRGKlD8WSeGEdtUa7hmzpR8Sa7haL1KVQrvgO6wqMjhWFFVjgtrh1gIxDz+P8sjUaA==
 
-"@npmcli/node-gyp@^1.0.1", "@npmcli/node-gyp@^1.0.2":
+"@npmcli/node-gyp@^1.0.2", "@npmcli/node-gyp@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@npmcli/node-gyp/-/node-gyp-1.0.3.tgz#a912e637418ffc5f2db375e93b85837691a43a33"
   integrity sha512-fnkhw+fmX65kiLqk6E3BFLXNC26rUhK90zVwe2yncPliVT/Qos3xjhTLE59Df8KnPlcwIERXKVlU1bXoUQ+liA==
@@ -378,9 +378,9 @@
     "@types/node" "*"
 
 "@types/node@*":
-  version "16.11.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.7.tgz#36820945061326978c42a01e56b61cd223dfdc42"
-  integrity sha512-QB5D2sqfSjCmTuWcBWyJ+/44bcjO7VbjSbOE0ucoVbAsSNQc4Lt6QkgkVXkTDwkL4z/beecZNDvVX15D4P8Jbw==
+  version "16.11.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.8.tgz#a1aeb23f0aa33cb111e64ccaa1687b2ae0423b69"
+  integrity sha512-hmT5gfpRkkHr7DZZHMf3jBe/zNcVGN+jXSL2f8nAsYfBPxQFToKwQlS/zES4Sjp488Bi73i+p6bvrNRRGU0x9Q==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -444,9 +444,9 @@ ajv@^6.10.0, ajv@^6.12.4:
     uri-js "^4.2.2"
 
 ajv@^8.0.1:
-  version "8.8.0"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.8.0.tgz#c501f10df72914bb77a458919e79fc73e4a2f9ef"
-  integrity sha512-L+cJ/+pkdICMueKR6wIx3VP2fjIx3yAhuvadUv/osv9yFD7OVZy442xFF+Oeu3ZvmhBGQzoF6mTSt+LUWBmGQg==
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.8.1.tgz#e73dd88eeb4b10bbcd82bee136e6fbe801664d18"
+  integrity sha512-6CiMNDrzv0ZR916u2T+iRunnD60uWmNn8SkdB44/6stVORUg0aAkWO7PkOhpCmjmW8f2I/G/xnowD66fxGyQJg==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -3305,9 +3305,9 @@ side-channel@^1.0.4:
     object-inspect "^1.9.0"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.5.tgz#9e3e8cc0c75a99472b44321033a7702e7738252f"
-  integrity sha512-KWcOiKeQj6ZyXx7zq4YxSMgHRlod4czeBQZrPb8OKcohcqAXShm7E20kEMle9WBt26hFcAf0qLOcp5zmY7kOqQ==
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.6.tgz#24e630c4b0f03fea446a2bd299e62b4a6ca8d0af"
+  integrity sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==
 
 slash@^3.0.0:
   version "3.0.0"

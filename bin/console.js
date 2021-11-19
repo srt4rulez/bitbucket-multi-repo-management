@@ -8,6 +8,7 @@ import { makeInitCommand } from './../src/init.js';
 import { makeRepoCommand } from './../src/repo.js';
 import { makeBranchCommand } from './../src/branch.js';
 import { makeTagCommand } from './../src/tag.js';
+import { makeConfigCommand } from './../src/config.js';
 import { URL } from 'url';
 import { cosmiconfigSync } from 'cosmiconfig';
 
@@ -29,11 +30,13 @@ const explorer = cosmiconfigSync('bmrm', {
 
 const result = explorer.search() || {};
 
-const config = result.config || {
+const defaultConfig = {
     repositories: [],
-    prereleaseIdentifier: undefined,
+    prereleaseIdentifier: null,
     versionPrefix: 'v',
 };
+
+const config = result.config || defaultConfig;
 
 const configLocation = result.filepath || '';
 
@@ -60,5 +63,6 @@ program
     .addCommand(makeRepoCommand(config))
     .addCommand(makeBranchCommand(authConfig, config))
     .addCommand(makeTagCommand(authConfig, config))
+    .addCommand(makeConfigCommand(defaultConfig))
     .parse()
 ;

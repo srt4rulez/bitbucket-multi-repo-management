@@ -15,7 +15,7 @@ export const makeRepoCommand = (config) => {
             const repositories = (config.repositories || []);
 
             if (repositories.length === 0) {
-                console.log('No repositories added yet. Try adding one with "repo add <repository>"');
+                console.log('No repositories added yet. Run "create-config" to setup the configuration file and add repositories.');
                 return;
             }
 

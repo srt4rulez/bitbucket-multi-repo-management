@@ -104,7 +104,7 @@ export const makeTagCommand = (authConfig, config) => {
             const repositories = config.repositories || [];
 
             if (repositories.length === 0) {
-                console.log('No repositories setup yet. Please run "repo add" command and try again.');
+                console.log('No repositories setup yet. Run "create-config" to setup the configuration file and add repositories.');
                 return;
             }
 
@@ -273,7 +273,7 @@ export const makeTagCommand = (authConfig, config) => {
             const repositories = config.repositories || [];
 
             if (repositories.length === 0) {
-                console.log('No repositories setup yet. Please run "repo add" command and try again.');
+                console.log('No repositories setup yet. Run "create-config" to setup the configuration file and add repositories.');
                 return;
             }
 

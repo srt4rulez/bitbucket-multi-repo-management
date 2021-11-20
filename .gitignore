@@ -105,3 +105,13 @@ dist
 
 # PHPStorm
 .idea/
+
+# Ignore local config files
+.bmrm
+.bmrm.json
+.bmrm.yaml
+.bmrm.yml
+.bmrm.js
+.bmrm.cjs
+bmrm.config.js
+bmrm.config.cjs

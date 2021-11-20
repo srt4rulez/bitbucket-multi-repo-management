@@ -19,53 +19,86 @@ or yarn:
 yarn global add @srt4rulez/bitbucket-multi-repo-management
 ```
 
-You should now have `bitbucket-multi-repo-management` available as a global executable.
+You should now have `bmrm` available as a global executable.
 
 Run it without any commands to see the help page:
 
 ```bash
-bitbucket-multi-repo-management
+bmrm
 ```
 
-## Usage
-
-### Configuration Setup
+### Auth Configuration
 
 Run the `init` command to setup your bitbucket username and app password.
 
 ```bash
-bitbucket-multi-repo-management init
+bmrm init
 ```
 
 > **Note**: Do not use your own bitbucket password. Instead, create an "app password" with **repositories read and write** access.
 > More info here on creating app passwords: https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/
 
-Once finished, a config file will be created at `~/.bitbucket-multi-repo-management.json`. You can edit this file anytime
+Once finished, a config file will be created at `~/.bmrm-auth.json`. You can edit this file anytime
 to change any configuration manually.
 
-### Adding / Removing Repositories
+### Configuration
 
-Next, add one or more repositories you'd like to manage via `repo add`:
+Create a `.bmrm.json` file or run `bmrm create-config` to create a file for you.
 
-```bash
-bitbucket-multi-repo-management repo add <organization/repository-slug>
+```json
+{
+    "repositories": [
+        "organization/the-best-repository",
+        "organization/awesome-repository"
+    ]
+}
 ```
 
-You must add the full repository name, which includes the organization or user and the repository slug.
-This must be a repository your account has access to.
+The following fields are valid in the configuration file:
 
-As well, to remove a repository, run `repo remove`:
+#### `repositories`
 
-```bash
-bitbucket-multi-repo-management repo remove <organization/repository-slug>
+An array of bitbucket repositories you'd like to run commands on. This should be the full name of the repository,
+include the organization / user account.
+
+#### `versionPrefix`
+
+A prefix for versioning (eg "v"). 
+
+When using the `tag create --interactive` command, a version prefix can be added to tags automatically.
+
+#### `prereleaseIdentifier`
+
+If following [semver](https://semver.org/), and using the `tag create --interactive` command, this will be the pre-release 
+suffix that can be generated for release versions (eg "alpha", "beta", "rc", etc).
+
+---
+
+You can also create a config file in any of these formats:
+
 ```
+package.json -- as a "bmrm" key
+.bmrm
+.bmrm.json
+.bmrm.yaml
+.bmrm.yml
+.bmrm.js
+.bmrm.cjs
+bmrm.config.js
+bmrm.config.cjs
+```
+
+We use [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) to load these different files, checkout that library
+for more information.
+
+## Usage
 
 ### Listing Configured Repositories
 
 Run `repo list` to view all the repositories you'd added so far:
 
 ```bash
-bitbucket-multi-repo-management repo list
+bmrm repo list
 ```
 
 ### Creating + Deleting Branches
@@ -73,8 +106,8 @@ bitbucket-multi-repo-management repo list
 Run `branch create` or `branch delete` to manage branches on all repositories.
 
 ```bash
-bitbucket-multi-repo-management branch create <fromBranch> <branchName>
-bitbucket-multi-repo-management branch delete <branchName>
+bmrm branch create <fromBranch> <branchName>
+bmrm branch delete <branchName>
 ```
 
 You will see your list of repositories, and some action information with a prompt to confirm before
@@ -85,9 +118,9 @@ the action is executed.
 Run `tag create` and `tag delete` to manage tags on all repositories.
 
 ```bash
-bitbucket-multi-repo-management tag create <fromBranchOrHash> <tagName>
+bmrm tag create <fromBranchOrHash> <tagName>
 # Or interactively with semver suggested versions based on the current version:
-bitbucket-multi-repo-management tag create --interactive
+bmrm tag create --interactive
 
-bitbucket-multi-repo-management tag delete <tagName>
+bmrm tag delete <tagName>
 ```

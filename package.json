@@ -17,7 +17,7 @@
     "node": "^17 || ^16 || ^15 || ^14 || ^13 || ^12"
   },
   "bin": {
-    "bitbucket-multi-repo-management": "bin/console.js"
+    "bmrm": "bin/console.js"
   },
   "bugs": {
     "url": "https://github.com/srt4rulez/bitbucket-multi-repo-management/issues"
@@ -31,6 +31,10 @@
     "multi",
     "repo",
     "repository"
+  ],
+  "files": [
+    "bin/*",
+    "src/*"
   ],
   "scripts": {
     "release": "release-it",
@@ -50,6 +54,7 @@
     "axios": "^0.24.0",
     "chalk": "^4.1.2",
     "commander": "^8.3.0",
+    "cosmiconfig": "^7.0.1",
     "inquirer": "^8.2.0",
     "semver": "^7.3.5"
   }
